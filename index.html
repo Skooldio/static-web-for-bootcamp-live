@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <script
+      src="https://kit.fontawesome.com/YOURRANDOMSTRINGHERE.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>My Gallery</title>
+  </head>
+  <body>
+    <header>
+      <h1>WEB DEVELOPMENT<br />BOOTCAMP</h1>
+      <p class="hero-section-subtitle">MY PHOTO GALLERY</p>
+    </header>
+    <main>
+      <p class="section-title">Features</p>
+      <section style="display: flex; flex-direction: column; gap: 24px">
+        <div class="feature-card">
+          <img
+            src="./assets/features/image-bootcamp-feature-1.png"
+            alt="City Skyline"
+          />
+          <div>
+            <p class="feature-card-title">City Skyline</p>
+            <p class="feature-card-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed
+              euismod diam. In pretium in odio at pretium. Aenean in suscipit
+              enim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sit
+              amet justo. Nulla vel diam at orci semper mattis.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card flex-row-reverse">
+          <img
+            src="./assets/features/image-bootcamp-feature-2.png"
+            alt="Corporate Stockphoto"
+          />
+          <div>
+            <p class="feature-card-title">Corporate Stockphoto</p>
+            <p class="feature-card-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed
+              euismod diam. In pretium in odio at pretium. Aenean in suscipit
+              enim. Aliquam lacus nulla, dapibus a eleifend sed, gravida sit
+              amet justo. Nulla vel diam at orci semper mattis.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <p class="section-title">My Work</p>
+      <section class="my-work-grid">
+        <img src="./assets/grid/image-bootcamp-1.png" alt="image 1" />
+        <img src="./assets/grid/image-bootcamp-2.png" alt="image 2" />
+        <img src="./assets/grid/image-bootcamp-3.png" alt="image 3" />
+        <img src="./assets/grid/image-bootcamp-4.png" alt="image 4" />
+        <img src="./assets/grid/image-bootcamp-5.png" alt="image 5" />
+        <img src="./assets/grid/image-bootcamp-6.png" alt="image 6" />
+      </section>
+
+      <!-- Gallery section -->
+      <p class="section-title">Gallery</p>
+      <section class="slides-section">
+        <div class="my-slides">
+          <img src="./assets/slider/slide1.jpg" alt="slide1" />
+          <img src="./assets/slider/slide2.jpg" alt="slide2" />
+          <img src="./assets/slider/slide3.jpg" alt="slide3" />
+          <img src="./assets/slider/slide4.jpg" alt="slide4" />
+        </div>
+
+        <div class="left-chevron" onclick="changeSlide(-1)">
+          <i class="fa-solid fa-chevron-left fa-2xl"></i>
+        </div>
+        <div class="right-chevron" onclick="changeSlide(1)">
+          <i class="fa-solid fa-chevron-right fa-2xl"></i>
+        </div>
+
+        <div class="dot-navs-container">
+          <div onclick="goToSlide(0)"></div>
+          <div onclick="goToSlide(1)"></div>
+          <div onclick="goToSlide(2)"></div>
+          <div onclick="goToSlide(3)"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div>
+          <h3 class="footer-title">Jane Doe</h3>
+          <p class="footer-details">
+            Hello, beautiful passerby. I’m Jane Doe. A passionate photographer.
+            I love to bla bla bla.... bla bla bla.... bla bla bla.... bla bla
+            bla.... bla bla bla.... bla bla bla.... bla bla bla....
+          </p>
+          <form class="subscribe-form" onsubmit="alertEmail(event)">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              class="email-input"
+              required
+            />
+            <button class="subscribe-button" type="submit">
+              Subscribe
+              <i class="fa-solid fa-arrow-right" style="color: #1c1b1f"></i>
+            </button>
+          </form>
+        </div>
+        <div>
+          <h3 class="footer-title">Get In Touch!</h3>
+          <p class="footer-details">
+            MBK Tower 20th Floor, 444, Phaya Thai Rd, Wang Mai, Pathum Wan,
+            Bangkok 10330
+          </p>
+          <p class="footer-details">Email: jane.doe@realmail.com</p>
+          <div class="social-icons">
+            <i
+              class="fa-brands fa-facebook fa-2xl"
+              style="font-size: 2.5em; color: #898989"
+            ></i>
+            <i
+              class="fa-brands fa-instagram fa-2xl"
+              style="font-size: 2.5em; color: #898989"
+            ></i>
+            <i
+              class="fa-brands fa-x-twitter fa-2xl"
+              style="font-size: 2.5em; color: #898989"
+            ></i>
+          </div>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <p class="copyright">© 2024, Jane Doe. All Rights Reserved.</p>
+    </footer>
+  </body>
+
+  <script>
+    function alertEmail(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formValue = Object.fromEntries(formData);
+      alert(`You (${formValue.email}) have subscribed!`);
+    }
+
+    let slideIndex = 0;
+    showSlide(slideIndex);
+
+    function goToSlide(n) {
+      slideIndex = n;
+      showSlide(slideIndex);
+    }
+    function changeSlide(n) {
+      slideIndex += n;
+      showSlide(slideIndex);
+    }
+
+    function showSlide(n) {
+      const slideImages = document.querySelectorAll('.my-slides > img');
+      const dotNavigations = document.querySelectorAll(
+        '.dot-navs-container > div'
+      );
+      if (n >= slideImages.length) {
+        slideIndex = 0;
+      }
+      if (n < 0) {
+        slideIndex = slideImages.length - 1;
+      }
+      for (let i = 0; i < slideImages.length; i++) {
+        slideImages[i].style.display = 'none';
+        dotNavigations[i].classList.remove('filled-dot-nav');
+        dotNavigations[i].classList.add('bordered-dot-nav');
+      }
+      slideImages[slideIndex].style.display = 'block';
+      dotNavigations[slideIndex].classList.add('filled-dot-nav');
+      dotNavigations[slideIndex].classList.remove('bordered-dot-nav');
+    }
+  </script>
+</html>
